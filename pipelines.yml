@@ -99,45 +99,21 @@ pipelines:
   - name: package_indexer
     type: Bash
     configuration:
-      gradleCommand: build artifactoryPublish
-      sourceLocation: package-indexer
-      configFileLocation: ..
-      configFileName: repo21-gradle-config
       inputResources:
         - name: package_indexer_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-          runtime:
-            type: image
-            image:
-              auto:
-                language: java
-                versions:
-                  - 11
+          execution:
+            onExecute:
+              - echo 'done'
   - name: parent_pom
     type: Bash
     configuration:
-      sourceLocation: parent-pom
-      configFileLocation: ..
-      configFileName: repo21-config
-      mvnCommand: "install -T 2C"
       inputResources:
         - name: parent_pom_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-        - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
+      execution:
+        onExecute:
+          - echo 'done'
   - name: commons
     type: Bash
     configuration:
@@ -150,223 +126,98 @@ pipelines:
       inputResources:
         - name: commons_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-      - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
+      execution:
+        onExecute:
+          - echo 'done'
   - name: jfrog_xray_java_client
     type: Bash
     configuration:
       inputSteps:
         - name: commons
-      sourceLocation: .
-      configFileLocation: .
-      configFileName: repo21-config
-      mvnCommand: "install"
       inputResources:
         - name: jfrog_xray_java_client_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-      - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
+      execution:
+        onExecute:
+          - echo 'done'
   - name: metadata_java_client
     type: Bash
     configuration:
       inputSteps:
       - name: commons
-      sourceLocation: metadata-java-client
-      configFileLocation: ..
-      configFileName: repo21-config
-      mvnCommand: "install -T 2C"
       inputResources:
         - name: metadata_java_client_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-      - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
+      execution:
+        onExecute:
+          - echo 'done'
   - name: commons_pro
     type: Bash
     configuration:
       inputSteps:
         - name: commons
-      sourceLocation: commons-pro
-      configFileLocation: ..
-      configFileName: repo21-config
-      mvnCommand: "install -T 2C"
       inputResources:
         - name: commons_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-        - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
+      execution:
+        onExecute:
+          - echo 'done'
   - name: access
     type: Bash
     configuration:
       inputSteps:
         - name: commons_pro
-      sourceLocation: access
-      configFileLocation: ..
-      configFileName: repo21-config
-      mvnCommand: "install -T 2C"
       inputResources:
         - name: access_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-        - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
+      execution:
+        onExecute:
+          - echo 'done'
   - name: access_pro
     type: Bash
     configuration:
       inputSteps:
-      - name: access
-      sourceLocation: access-pro
-      configFileLocation: ..
-      configFileName: repo21-config
-      mvnCommand: "install -T 2C"
+        - name: access
       inputResources:
         - name: access_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-        - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
+      execution:
+        onExecute:
+          - echo 'done'
   - name: binarystore
     type: Bash
     configuration:
       inputSteps:
-      - name: access_pro
-      sourceLocation: binary-store
-      configFileLocation: ..
-      configFileName: repo21-config
-      mvnCommand: "install -T 2C"
+        - name: access_pro
       inputResources:
         - name: binary_store_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-        - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
+      execution:
+        onExecute:
+          - echo 'done'
   - name: binarystore_pro
     type: Bash
     configuration:
       inputSteps:
         - name: binarystore
-      sourceLocation: binary-store-pro
-      configFileLocation: ..
-      configFileName: repo21-config
-      mvnCommand: "install -T 2C"
       inputResources:
         - name: binary_store_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-      - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
+      execution:
+        onExecute:
+          - echo 'done'
   - name: artifactory_oss
     type: Bash
     configuration:
       inputSteps:
         - name: binarystore_pro
         - name: metadata_java_client
-      sourceLocation: artifactory-oss
-      configFileLocation: ..
-      configFileName: repo21-config
-      mvnCommand: "install -T 2C"
       inputResources:
         - name: artifactory_oss_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-        - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
-        - |
-          echo 'registry=https://repo.jfrog.io/artifactory/api/npm/npmjs' > $res_artifactory_oss_bitbucket_resourcePath/artifactory-oss/.npmrc
-          curl -s -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password https://entplus.jfrog.io/artifactory/api/npm/auth >> $res_artifactory_oss_bitbucket_resourcePath/artifactory-oss/.npmrc
+      execution:
+        onExecute:
+          - echo 'done'
   - name: artifactory_pro
     type: Bash
     configuration:
@@ -374,52 +225,21 @@ pipelines:
         - name: artifactory_oss
         - name: package_indexer
         - name: jfrog_xray_java_client
-      sourceLocation: artifactory-pro
-      configFileLocation: ..
-      configFileName: repo21-config
-      mvnCommand: install -T 2C
       inputResources:
         - name: artifactory_pro_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-      - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
+      execution:
+        onExecute:
+          - echo 'done'
   - name: distribution
     type: Bash
     configuration:
       inputSteps:
         - name: access
         - name: jfrog_xray_java_client
-      gradleCommand: build artifactoryPublish
-      sourceLocation: .
-      configFileLocation: .
-      configFileName: repo21-gradle-config
       inputResources:
         - name: distribution_bitbucket
           trigger: true
-      integrations:
-        - name: entplus_deployer
-        - name: entplus_reader_creds
-      runtime:
-        type: image
-        image:
-          auto:
-            language: java
-            versions:
-              - 11
-    execution:
-      onStart:
-        - "echo artifactory_user=${int_entplus_reader_creds_username} >> ${res_distribution_bitbucket_resourcePath}/gradle.properties"
-        - "echo artifactory_password=${int_entplus_reader_creds_password} >> ${res_distribution_bitbucket_resourcePath}/gradle.properties"
-        - "echo artifactory_resolveRepo=feature-DEVF-210-virtual >> ${res_distribution_bitbucket_resourcePath}/gradle.properties"
-        - "cat ${res_distribution_bitbucket_resourcePath}/gradle.properties"
+      execution:
+        onExecute:
+          - echo 'done'
