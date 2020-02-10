@@ -102,18 +102,18 @@ pipelines:
       inputResources:
         - name: package_indexer_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: parent_pom
     type: Bash
     configuration:
       inputResources:
         - name: parent_pom_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: commons
     type: Bash
     configuration:
@@ -122,9 +122,9 @@ pipelines:
       inputResources:
         - name: commons_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: jfrog_xray_java_client
     type: Bash
     configuration:
@@ -133,9 +133,9 @@ pipelines:
       inputResources:
         - name: jfrog_xray_java_client_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: metadata_java_client
     type: Bash
     configuration:
@@ -144,9 +144,9 @@ pipelines:
       inputResources:
         - name: metadata_java_client_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: commons_pro
     type: Bash
     configuration:
@@ -155,9 +155,9 @@ pipelines:
       inputResources:
         - name: commons_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: access
     type: Bash
     configuration:
@@ -166,9 +166,9 @@ pipelines:
       inputResources:
         - name: access_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: access_pro
     type: Bash
     configuration:
@@ -177,9 +177,9 @@ pipelines:
       inputResources:
         - name: access_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: binarystore
     type: Bash
     configuration:
@@ -188,9 +188,9 @@ pipelines:
       inputResources:
         - name: binary_store_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: binarystore_pro
     type: Bash
     configuration:
@@ -211,9 +211,9 @@ pipelines:
       inputResources:
         - name: artifactory_oss_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: artifactory_pro
     type: Bash
     configuration:
@@ -224,9 +224,9 @@ pipelines:
       inputResources:
         - name: artifactory_pro_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: distribution
     type: Bash
     configuration:
@@ -236,6 +236,6 @@ pipelines:
       inputResources:
         - name: distribution_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
