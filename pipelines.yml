@@ -97,7 +97,7 @@ pipelines:
 - name: jfrog_build
   steps:
   - name: package_indexer
-    type: GradleBuild
+    type: Bash
     configuration:
       gradleCommand: build artifactoryPublish
       sourceLocation: package-indexer
@@ -116,7 +116,7 @@ pipelines:
                 versions:
                   - 11
   - name: parent_pom
-    type: MvnBuild
+    type: Bash
     configuration:
       sourceLocation: parent-pom
       configFileLocation: ..
@@ -139,7 +139,7 @@ pipelines:
       onStart:
         - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
   - name: commons
-    type: MvnBuild
+    type: Bash
     configuration:
       inputSteps:
         - name: parent_pom
@@ -164,7 +164,7 @@ pipelines:
       onStart:
       - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
   - name: jfrog_xray_java_client
-    type: MvnBuild
+    type: Bash
     configuration:
       inputSteps:
         - name: commons
@@ -189,7 +189,7 @@ pipelines:
       onStart:
       - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
   - name: metadata_java_client
-    type: MvnBuild
+    type: Bash
     configuration:
       inputSteps:
       - name: commons
@@ -214,7 +214,7 @@ pipelines:
       onStart:
       - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
   - name: commons_pro
-    type: MvnBuild
+    type: Bash
     configuration:
       inputSteps:
         - name: commons
@@ -239,7 +239,7 @@ pipelines:
       onStart:
         - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
   - name: access
-    type: MvnBuild
+    type: Bash
     configuration:
       inputSteps:
         - name: commons_pro
@@ -264,7 +264,7 @@ pipelines:
       onStart:
         - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
   - name: access_pro
-    type: MvnBuild
+    type: Bash
     configuration:
       inputSteps:
       - name: access
@@ -289,7 +289,7 @@ pipelines:
       onStart:
         - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
   - name: binarystore
-    type: MvnBuild
+    type: Bash
     configuration:
       inputSteps:
       - name: access_pro
@@ -314,7 +314,7 @@ pipelines:
       onStart:
         - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
   - name: binarystore_pro
-    type: MvnBuild
+    type: Bash
     configuration:
       inputSteps:
         - name: binarystore
@@ -339,7 +339,7 @@ pipelines:
       onStart:
       - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
   - name: artifactory_oss
-    type: MvnBuild
+    type: Bash
     configuration:
       inputSteps:
         - name: binarystore_pro
@@ -368,7 +368,7 @@ pipelines:
           echo 'registry=https://repo.jfrog.io/artifactory/api/npm/npmjs' > $res_artifactory_oss_bitbucket_resourcePath/artifactory-oss/.npmrc
           curl -s -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password https://entplus.jfrog.io/artifactory/api/npm/auth >> $res_artifactory_oss_bitbucket_resourcePath/artifactory-oss/.npmrc
   - name: artifactory_pro
-    type: MvnBuild
+    type: Bash
     configuration:
       inputSteps:
         - name: artifactory_oss
@@ -395,7 +395,7 @@ pipelines:
       onStart:
       - "mkdir -p /root/.m2 && curl -u$int_entplus_reader_creds_username:$int_entplus_reader_creds_password -H 'X-Resolve-Repo: feature-DEVF-210-virtual' https://repo.jfrog.io/artifactory/ci-files-local/settings-files/dynamic-settings.xml -o /root/.m2/settings.xml"
   - name: distribution
-    type: GradleBuild
+    type: Bash
     configuration:
       inputSteps:
         - name: access
