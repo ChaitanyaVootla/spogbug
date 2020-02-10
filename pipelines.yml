@@ -2,21 +2,21 @@ resources:
 - name: gitBugTest
   type: GitRepo
   configuration:
-    path: jfrog/artifactory
+    path: ChaitanyaVootla/ymlTest
     gitProvider: gitBugTest
     branches:
       include: ^{{gitBranch}}$
 - name: jfrog_xray_java_client_bitbucket
   type: GitRepo
   configuration:
-    path: common/jfrog-xray-java-client
+    path: ChaitanyaVootla/ymlTest
     gitProvider: gitBugTest
     branches:
       include: master
 - name: parent_pom_bitbucket
   type: GitRepo
   configuration:
-    path: jfrog/artifactory
+    path: ChaitanyaVootla/ymlTest
     gitProvider: gitBugTest
     branches:
       include: ^{{gitBranch}}$
@@ -25,7 +25,7 @@ resources:
 - name: commons_bitbucket
   type: GitRepo
   configuration:
-    path: jfrog/artifactory
+    path: ChaitanyaVootla/ymlTest
     gitProvider: gitBugTest
     branches:
       include: ^{{gitBranch}}$
@@ -34,7 +34,7 @@ resources:
 - name: metadata_java_client_bitbucket
   type: GitRepo
   configuration:
-    path: jfrog/artifactory
+    path: ChaitanyaVootla/ymlTest
     gitProvider: gitBugTest
     branches:
       include: ^{{gitBranch}}$
@@ -43,7 +43,7 @@ resources:
 - name: access_bitbucket
   type: GitRepo
   configuration:
-    path: jfrog/artifactory
+    path: ChaitanyaVootla/ymlTest
     gitProvider: gitBugTest
     branches:
       include: ^{{gitBranch}}$
@@ -52,7 +52,7 @@ resources:
 - name: package_indexer_bitbucket
   type: GitRepo
   configuration:
-    path: jfrog/artifactory
+    path: ChaitanyaVootla/ymlTest
     gitProvider: gitBugTest
     branches:
       include: ^{{gitBranch}}$
@@ -61,7 +61,7 @@ resources:
 - name: binary_store_bitbucket
   type: GitRepo
   configuration:
-    path: jfrog/artifactory
+    path: ChaitanyaVootla/ymlTest
     gitProvider: gitBugTest
     branches:
       include: ^{{gitBranch}}$
@@ -70,7 +70,7 @@ resources:
 - name: artifactory_oss_bitbucket
   type: GitRepo
   configuration:
-    path: jfrog/artifactory
+    path: ChaitanyaVootla/ymlTest
     gitProvider: gitBugTest
     branches:
       include: ^{{gitBranch}}$
@@ -79,7 +79,7 @@ resources:
 - name: artifactory_pro_bitbucket
   type: GitRepo
   configuration:
-    path: jfrog/artifactory
+    path: ChaitanyaVootla/ymlTest
     gitProvider: gitBugTest
     branches:
       include: ^{{gitBranch}}$
@@ -88,7 +88,7 @@ resources:
 - name: distribution_bitbucket
   type: GitRepo
   configuration:
-    path: bintray/distribution
+    path: ChaitanyaVootla/ymlTest
     gitProvider: gitBugTest
     branches:
       include: ^{{gitBranch}}$
