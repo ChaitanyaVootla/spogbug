@@ -1,23 +1,23 @@
 resources: 
-- name: jfrog_bitbucket
+- name: gitResource
   type: GitRepo
   configuration: 
     path: jfrog/artifactory
-    gitProvider: JFrog_bitbucket
+    gitProvider: gitResource
     branches: 
       include: ^{{gitBranch}}$
 - name: jfrog_xray_java_client_bitbucket
   type: GitRepo
   configuration: 
     path: common/jfrog-xray-java-client
-    gitProvider: JFrog_bitbucket
+    gitProvider: gitResource
     branches: 
       include: master
 - name: parent_pom_bitbucket
   type: GitRepo
   configuration: 
     path: jfrog/artifactory
-    gitProvider: JFrog_bitbucket
+    gitProvider: gitResource
     branches: 
       include: ^{{gitBranch}}$
     files: 
@@ -26,7 +26,7 @@ resources:
   type: GitRepo
   configuration: 
     path: jfrog/artifactory
-    gitProvider: JFrog_bitbucket
+    gitProvider: gitResource
     branches: 
       include: ^{{gitBranch}}$
     files: 
@@ -35,7 +35,7 @@ resources:
   type: GitRepo
   configuration: 
     path: jfrog/artifactory
-    gitProvider: JFrog_bitbucket
+    gitProvider: gitResource
     branches: 
       include: ^{{gitBranch}}$
     files: 
@@ -44,7 +44,7 @@ resources:
   type: GitRepo
   configuration: 
     path: jfrog/artifactory
-    gitProvider: JFrog_bitbucket
+    gitProvider: gitResource
     branches: 
       include: ^{{gitBranch}}$
     files: 
@@ -53,7 +53,7 @@ resources:
   type: GitRepo
   configuration: 
     path: jfrog/artifactory
-    gitProvider: JFrog_bitbucket
+    gitProvider: gitResource
     branches: 
       include: ^{{gitBranch}}$
     files: 
@@ -62,7 +62,7 @@ resources:
   type: GitRepo
   configuration: 
     path: jfrog/artifactory
-    gitProvider: JFrog_bitbucket
+    gitProvider: gitResource
     branches: 
       include: ^{{gitBranch}}$
     files: 
@@ -71,7 +71,7 @@ resources:
   type: GitRepo
   configuration: 
     path: jfrog/artifactory
-    gitProvider: JFrog_bitbucket
+    gitProvider: gitResource
     branches: 
       include: ^{{gitBranch}}$
     files: 
@@ -80,7 +80,7 @@ resources:
   type: GitRepo
   configuration: 
     path: jfrog/artifactory
-    gitProvider: JFrog_bitbucket
+    gitProvider: gitResource
     branches: 
       include: ^{{gitBranch}}$
     files: 
@@ -89,7 +89,7 @@ resources:
   type: GitRepo
   configuration: 
     path: bintray/distribution
-    gitProvider: JFrog_bitbucket
+    gitProvider: gitResource
     branches: 
       include: ^{{gitBranch}}$
 
