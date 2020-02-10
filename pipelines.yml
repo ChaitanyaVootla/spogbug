@@ -199,9 +199,9 @@ pipelines:
       inputResources:
         - name: binary_store_bitbucket
           trigger: true
-      execution:
-        onExecute:
-          - echo 'done'
+    execution:
+      onExecute:
+        - echo 'done'
   - name: artifactory_oss
     type: Bash
     configuration:
